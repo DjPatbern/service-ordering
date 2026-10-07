@@ -1,26 +1,79 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: #fbfaf6;
+  --color-ink: #253328;
+  --color-muted: #687065;
+  --color-brand: #28523b;
+  --color-brand-dark: #1d402c;
+  --color-line: #e4e5db;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: light;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button:not(:disabled),
+select {
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid #28523b;
+  outline-offset: 4px;
+}
+::selection {
+  background: #dce5c6;
+  color: #203c28;
+}
+.page-shell {
+  width: min(100% - 96px, 1320px);
+  margin-inline: auto;
+}
+.field {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: white;
+  padding: 11px 13px;
+  font-size: 14px;
+}
+.field:focus {
+  outline: 2px solid #557747;
+  outline-offset: 2px;
+}
+.field[aria-invalid="true"] {
+  border-color: #b84435;
+}
+.grain {
+  background-image: radial-gradient(#5b604014 0.7px, transparent 0.7px);
+  background-size: 5px 5px;
+}
+@media (max-width: 767px) {
+  .page-shell {
+    width: calc(100% - 40px);
   }
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
