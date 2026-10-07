@@ -14,7 +14,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). The root redirects to `/ng`. No API keys or database are required. If macOS reports permission errors, ensure this project belongs to your normal user; do not install dependencies with `sudo`.
 
-Production output uses `.next-production` so a running development preview cannot overwrite the production build. The npm scripts set `NEXT_DIST_DIR` for build, start and type generation.
+Production builds use the standard `.next` directory expected by Next.js hosting integrations. Stop the development server before building locally.
 
 For production:
 
