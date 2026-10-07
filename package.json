@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_DIST_DIR=.next-production next build",
-    "start": "NEXT_DIST_DIR=.next-production next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint",
-    "typecheck": "NEXT_DIST_DIR=.next-production next typegen && tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
