@@ -45,4 +45,3 @@ next-env.d.ts
 .env.example
 
 .next-production/
-config.bat
