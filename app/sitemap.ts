@@ -1,26 +1,18 @@
 import type { MetadataRoute } from "next";
-import { marketCodes, markets } from "@/lib/markets";
-import { services } from "@/features/catalog/data";
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  return marketCodes.flatMap((market) => [
-    {
-      url: `${base}/${market}`,
+import { siteUrl } from "@/lib/brand";
+import { getProducts } from "@/lib/server/catalog";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const products = await getProducts();
+  return [
+    { url: siteUrl, changeFrequency: "weekly", priority: 1 },
+    { url: `${siteUrl}/shop`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${siteUrl}/privacy`, changeFrequency: "yearly", priority: 0.2 },
+    ...products.map((product) => ({
+      url: `${siteUrl}/shop/${product.slug}`,
       changeFrequency: "weekly" as const,
-      priority: 1,
-    },
-    ...services.map((service) => ({
-      url: `${base}/${market}/services/${service.slug}`,
-      changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: Object.fromEntries(
-          marketCodes.map((code) => [
-            markets[code].locale,
-            `${base}/${code}/services/${service.slug}`,
-          ]),
-        ),
-      },
+      images: [new URL(product.image, siteUrl).toString()],
     })),
-  ]);
+  ];
 }

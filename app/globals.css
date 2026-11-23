@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @theme inline {
-  --color-cream: #fbfaf6;
-  --color-ink: #253328;
-  --color-muted: #687065;
-  --color-brand: #28523b;
-  --color-brand-dark: #1d402c;
-  --color-line: #e4e5db;
+  --color-cream: #faf9f7;
+  --color-ink: #18181b;
+  --color-muted: #67676f;
+  --color-brand: #bf0f39;
+  --color-brand-dark: #9d0b2e;
+  --color-line: #e8e6e6;
   --font-sans: Arial, Helvetica, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: Arial, Helvetica, sans-serif;
 }
 :root {
   color-scheme: light;
@@ -17,30 +17,25 @@ html {
   scroll-padding-top: 24px;
 }
 body {
-  background: var(--color-cream);
+  background: white;
   color: var(--color-ink);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-button,
-select,
-a {
-  -webkit-tap-highlight-color: transparent;
 }
 button:not(:disabled),
 select {
   cursor: pointer;
 }
 :focus-visible {
-  outline: 2px solid #28523b;
+  outline: 2px solid #bf0f39;
   outline-offset: 4px;
 }
 ::selection {
-  background: #dce5c6;
-  color: #203c28;
+  background: #fbdce4;
+  color: #8e0b2a;
 }
 .page-shell {
-  width: min(100% - 96px, 1320px);
+  width: min(calc(100% - 96px), 1280px);
   margin-inline: auto;
 }
 .field {
@@ -53,15 +48,18 @@ select {
   font-size: 14px;
 }
 .field:focus {
-  outline: 2px solid #557747;
+  outline: 2px solid #bf0f39;
   outline-offset: 2px;
 }
 .field[aria-invalid="true"] {
-  border-color: #b84435;
+  border-color: #bf0f39;
 }
-.grain {
-  background-image: radial-gradient(#5b604014 0.7px, transparent 0.7px);
-  background-size: 5px 5px;
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-brand);
 }
 @media (max-width: 767px) {
   .page-shell {

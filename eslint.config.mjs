@@ -2,10 +2,6 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import prettier from "eslint-config-prettier";
 import nextTs from "eslint-config-next/typescript";
-import { createRequire } from 'module';
-
-var require = createRequire(import.meta.url);
-var module = { exports: {} };
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -15,6 +11,7 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    ".next-verify/**",
     ".next-production/**",
     "out/**",
     "build/**",

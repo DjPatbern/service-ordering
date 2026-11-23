@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
-import { CartProvider } from "@/features/cart/store";
+import { StoreProvider } from "@/features/store/cart";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { brand, siteUrl } from "@/lib/brand";
 import "./globals.css";
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Branda — Big ideas. Beautifully branded.",
-    template: "%s | Branda",
+    default: "zhoppin.ng — Your next upgrade starts here",
+    template: "%s | zhoppin.ng",
   },
-  description:
-    "Your complete branding ecosystem. Discover design, digital, gifts, studio and print services made for your next big move.",
+  description: brand.description,
+  referrer: "no-referrer",
+  openGraph: {
+    title: "zhoppin.ng — Your next upgrade starts here",
+    description: brand.description,
+    siteName: "zhoppin.ng",
+    locale: "en_NG",
+    type: "website",
+  },
+  icons: { icon: "/icon.svg" },
 };
 export default function RootLayout({
   children,
@@ -19,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en-NG">
       <body>
         <a
           href="#main-content"
@@ -27,10 +36,12 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <CartProvider>
+        <StoreProvider>
+          <Header />
           {children}
+          <Footer />
           <Toaster richColors position="bottom-right" />
-        </CartProvider>
+        </StoreProvider>
       </body>
     </html>
   );
